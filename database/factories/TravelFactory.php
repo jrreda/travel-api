@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Tour;
+use App\Models\Travel;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,11 +19,21 @@ class TravelFactory extends Factory
      */
     public function definition(): array
     {
+        $name = $this->faker->unique()->words(3, true); // Generate a unique name
+
         return [
-            'name' => fake()->text(20),
-            'is_public' => fake()->boolean(),
-            'description' => fake()->paragraphs(3, true),
+            'name'           => $name,
+            'slug'           => Str::slug($name),
+            'is_public'      => fake()->boolean(),
+            'description'    => fake()->paragraphs(3, true),
             'number_of_days' => fake()->numberBetween(1, 10),
         ];
     }
+
+    // public function configure()
+    // {
+    //     return $this->afterCreating(function (Travel $travel) {
+    //         Tour::factory()->count(3)->create(['travel_id' => $travel->id]);
+    //     });
+    // }
 }
