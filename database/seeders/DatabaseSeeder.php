@@ -26,5 +26,7 @@ class DatabaseSeeder extends Seeder
             ->has(Tour::factory(3))
             ->count(30)
             ->create();
+
+        $this->call(RoleSeeder::class);
     }
 }
