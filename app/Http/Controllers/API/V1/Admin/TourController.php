@@ -31,8 +31,6 @@ class TourController extends Controller
      */
     public function store(Travel $travel, TourRequest $request)
     {
-        dd(auth()->user()->roles);
-
         $tour = $travel->tours()->create($request->validated());
 
         return new TourResource($tour);
