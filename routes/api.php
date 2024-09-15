@@ -12,14 +12,14 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::prefix('v1')->group(function() {
+Route::prefix('v1')->group(function () {
     Route::post('login', LoginController::class);
 
     Route::get('/travels', [TravelController::class, 'index'])->name('public-travels');
     Route::get('/travels/{travel:slug}/tours', [TourController::class, 'index'])->name('public-tours');
 
-    Route::prefix('admin')->middleware('auth:sanctum')->group(function() {
-        Route::middleware('role:admin')->group(function() {
+    Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
+        Route::middleware('role:admin')->group(function () {
             Route::post('travels', [AdminTravelController::class, 'store']);
             Route::post('travels/{travel}/tours', [AdminTourController::class, 'store']); // travel_id
         });

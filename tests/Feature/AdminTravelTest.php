@@ -39,11 +39,11 @@ test('saves travel successfully with valid data', function () {
     // create a new travel successfully
     $response = $this->actingAs($user)
         ->postJson('/api/v1/admin/travels', [
-                'name'           => 'Test Travel',
-                'description'    => 'This is a test travel.',
-                'is_public'      => 1,
-                'number_of_days' => 5,
-            ]);
+            'name' => 'Test Travel',
+            'description' => 'This is a test travel.',
+            'is_public' => 1,
+            'number_of_days' => 5,
+        ]);
     $response->assertStatus(201);
 
     // access public Travel
@@ -60,17 +60,17 @@ test('updates travel successfully with valid date', function () {
     $travel = Travel::factory()->create();
 
     $response = $this->actingAs($user)
-        ->postJson('/api/v1/admin/travels/' . $travel->id, [
+        ->postJson('/api/v1/admin/travels/'.$travel->id, [
             'name' => 'Test Travel',
         ]);
     $response->assertStatus(405);
 
     // update a travel successfully
     $response = $this->actingAs($user)
-        ->putJson('/api/v1/admin/travels/' . $travel->id, [
-            'name'           => 'Test updated Travel',
-            'is_public'      => 1,
-            'description'    => 'Some description',
+        ->putJson('/api/v1/admin/travels/'.$travel->id, [
+            'name' => 'Test updated Travel',
+            'is_public' => 1,
+            'description' => 'Some description',
             'number_of_days' => 5,
         ]);
     $response->assertStatus(200);

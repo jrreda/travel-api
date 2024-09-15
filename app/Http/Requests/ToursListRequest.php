@@ -23,10 +23,10 @@ class ToursListRequest extends FormRequest
     {
         return [
             'priceFrom' => 'numeric',
-            'priceTo'   => 'numeric',
-            'dateFrom'  => 'date',
-            'dateTo'    => 'date',
-            'sortBy'    => 'string|in:price',
+            'priceTo' => 'numeric',
+            'dateFrom' => 'date',
+            'dateTo' => 'date',
+            'sortBy' => 'string|in:price',
             'sortOrder' => 'string|in:asc,desc',
         ];
     }
@@ -34,7 +34,7 @@ class ToursListRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'sortBy'    => "The 'sortBy' parameter accepts only 'price' value",
+            'sortBy' => "The 'sortBy' parameter accepts only 'price' value",
             'sortOrder' => "The 'orderBy' parameter accepts only 'asc' or 'desc' value",
         ];
     }

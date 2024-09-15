@@ -4,8 +4,8 @@ namespace Database\Factories;
 
 use App\Models\Tour;
 use App\Models\Travel;
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Travel>
@@ -22,10 +22,10 @@ class TravelFactory extends Factory
         $name = $this->faker->unique()->words(3, true); // Generate a unique name
 
         return [
-            'name'           => $name,
-            'slug'           => Str::slug($name),
-            'is_public'      => fake()->boolean(),
-            'description'    => fake()->paragraphs(3, true),
+            'name' => $name,
+            'slug' => Str::slug($name),
+            'is_public' => fake()->boolean(),
+            'description' => fake()->paragraphs(3, true),
             'number_of_days' => fake()->numberBetween(1, 10),
         ];
     }

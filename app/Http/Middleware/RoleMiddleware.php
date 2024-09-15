@@ -12,12 +12,11 @@ class RoleMiddleware
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     * @param  string  $role
      */
     public function handle(Request $request, Closure $next, string $role): Response
     {
         // Debugging: log the role to see if it's passed correctly
-        \Log::info('RoleMiddleware invoked with role: ' . $role);
+        \Log::info('RoleMiddleware invoked with role: '.$role);
 
         if (! auth()->check()) {
             abort(401);
